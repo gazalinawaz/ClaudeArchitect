@@ -6,7 +6,94 @@ This guide explains Claude Code configuration, CLAUDE.md, skills, commands, and 
 
 ---
 
-## 📚 Table of Contents
+## �️ Concept Map
+
+```
+CLAUDE CODE CONFIGURATION & WORKFLOWS
+│
+├── CLAUDE.md CONFIGURATION
+│   ├── Location: .claude/CLAUDE.md
+│   ├── The 200-Line Rule
+│   │   └── Focus on critical rules, not preferences
+│   ├── Content
+│   │   ├── Tech stack
+│   │   ├── Code standards
+│   │   ├── Critical rules
+│   │   └── File structure
+│   └── Modular Organization
+│       └── @import .claude/rules/specific-rules.md
+│
+├── CONFIGURATION HIERARCHY
+│   ├── Directory-specific CLAUDE.md (Highest)
+│   ├── Project CLAUDE.md (.claude/)
+│   └── User CLAUDE.md (~/.claude/) (Lowest)
+│
+├── PATH-SPECIFIC RULES
+│   └── YAML Frontmatter
+│       └── paths: ["src/api/**/*.ts"]
+│
+├── SKILLS vs COMMANDS
+│   ├── Commands (.claude/commands/)
+│   │   ├── Purpose: Simple, single-purpose actions
+│   │   └── Example: Format code, run tests
+│   └── Skills (.claude/skills/)
+│       ├── Purpose: Complex, multi-step workflows
+│       ├── Frontmatter Options
+│       │   ├── context: fork (Isolated session)
+│       │   ├── allowed-tools: [...] (Restrict tools)
+│       │   └── argument-hint: "..." (User guidance)
+│       └── Example: Code review, complex refactoring
+│
+├── PLAN MODE vs DIRECT EXECUTION
+│   ├── Plan Mode (--plan or -p)
+│   │   ├── Shows proposed changes BEFORE executing
+│   │   └── Use for: Complex refactoring, high-risk changes
+│   └── Direct Execution
+│       ├── Executes immediately
+│       └── Use for: Simple tasks, low-risk changes
+│
+├── CI/CD INTEGRATION
+│   ├── Non-Interactive Mode
+│   │   └── Flag: -p (prompt flag)
+│   ├── Structured Output
+│   │   └── Flag: --output-format json
+│   └── Schema Validation
+│       └── Flag: --json-schema schema.json
+│
+├── BATCH API
+│   ├── Benefits
+│   │   ├── 50% cost savings
+│   │   └── Process multiple requests together
+│   ├── Trade-off
+│   │   └── Results within 24 hours (not instant)
+│   ├── custom_id
+│   │   └── Track which response belongs to which request
+│   └── Use Cases
+│       ├── ✓ Bulk processing (1000 code reviews)
+│       ├── ✓ Non-urgent analysis
+│       └── ✗ Real-time needs
+│
+└── ITERATIVE REFINEMENT
+    ├── Pattern 1: Basic → Enhanced → Polished
+    ├── Pattern 2: Interview Pattern
+    │   ├── Ask Claude to propose approach
+    │   ├── Review proposal
+    │   └── Iterate based on feedback
+    ├── Pattern 3: TDD
+    │   ├── Write failing test
+    │   ├── Implement code
+    │   └── Refactor
+    └── Multi-Pass Review
+        ├── Pass 1: Generate (Session 1)
+        ├── Pass 2: Review (Fresh Session 2)
+        │   └── Why fresh: Avoid confirmation bias
+        ├── Pass 1 Focus: Per-file analysis
+        └── Pass 2 Focus: Cross-file integration
+```
+
+---
+
+## �📚 Table of Contents
 
 1. [CLAUDE.md Configuration](#claudemd-configuration)
 2. [Configuration Hierarchy](#configuration-hierarchy)

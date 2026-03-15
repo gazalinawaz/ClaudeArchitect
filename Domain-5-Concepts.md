@@ -6,7 +6,100 @@ This guide explains context management, escalation patterns, error handling, and
 
 ---
 
-## 📚 Table of Contents
+## �️ Concept Map
+
+```
+CONTEXT MANAGEMENT & RELIABILITY
+│
+├── CONTEXT MANAGEMENT
+│   ├── Context Window Problem
+│   │   └── Limited capacity (e.g., 200K tokens)
+│   ├── Context Degradation
+│   │   ├── Symptoms: Loss of focus, repetitive responses
+│   │   └── Causes: Long sessions, accumulated context
+│   └── Solutions
+│       ├── /compact (Summarize and reduce)
+│       ├── Fresh Session (Start new with summary)
+│       ├── Scratchpad Files (External state storage)
+│       └── Subagent Delegation (Offload verbose tasks)
+│
+├── PROGRESSIVE SUMMARIZATION
+│   ├── Process: Repeatedly compress context
+│   ├── Risk: Information Loss
+│   │   └── Each summarization loses details
+│   ├── Solution: Case Facts Blocks
+│   │   └── Preserve critical info (never summarize)
+│   └── When to Use
+│       ├── ✓ Long sessions, general history
+│       └── ✗ Critical information, recent context
+│
+├── ESCALATION PATTERNS
+│   ├── When to Escalate (✓)
+│   │   ├── Policy gaps
+│   │   ├── High-value transactions (>threshold)
+│   │   ├── Legal concerns
+│   │   └── Explicit business rules
+│   ├── When NOT to Escalate (✗)
+│   │   ├── Customer sentiment (angry ≠ complex)
+│   │   ├── Self-reported confidence (unreliable)
+│   │   ├── Response length
+│   │   └── Arbitrary thresholds
+│   └── Escalation Response
+│       ├── escalated: true
+│       ├── reason
+│       ├── context
+│       └── suggested_action
+│
+├── ERROR PROPAGATION
+│   ├── Structured Errors
+│   │   ├── isError, errorCategory, isRetryable
+│   │   ├── message, context, suggestedAction
+│   │   └── originalError (preserve chain)
+│   ├── Error Categories
+│   │   ├── Retryable: network_timeout, rate_limit, service_unavailable
+│   │   └── Not Retryable: auth_failed, invalid_input, not_found
+│   ├── Empty Results vs Errors
+│   │   ├── Empty: Valid result (no data found)
+│   │   └── Error: Access failure
+│   └── Multi-Layer Propagation
+│       └── Each layer adds context without losing previous
+│
+├── INFORMATION PROVENANCE
+│   ├── What: Track where information came from
+│   ├── Claim-Source Mapping
+│   │   ├── claim
+│   │   ├── sources (with URLs, dates)
+│   │   ├── confidence level
+│   │   └── consensus status
+│   ├── Temporal Context
+│   │   └── Include dates (information ages)
+│   ├── Conflict Annotation
+│   │   └── When sources disagree, note both perspectives
+│   └── Source Characterization
+│       └── Distinguish: peer-reviewed vs preliminary
+│
+└── RELIABILITY STRATEGIES
+    ├── Local Recovery Before Escalation
+    │   └── Try local fixes (retry, backoff) before escalating
+    ├── Partial Results
+    │   ├── completed: [...]
+    │   ├── failed: [...]
+    │   └── Don't fail everything if some succeed
+    ├── Crash Recovery
+    │   ├── Save state manifest
+    │   ├── completed_steps, current_step, pending_steps
+    │   └── Resume from checkpoint
+    ├── Circuit Breaker
+    │   ├── Track failure rate
+    │   ├── Open circuit after threshold
+    │   └── Close after cooldown
+    └── Graceful Degradation
+        └── Fallback chain: Primary → Basic → Cached → Minimal
+```
+
+---
+
+## �📚 Table of Contents
 
 1. [Context Management](#context-management)
 2. [Progressive Summarization](#progressive-summarization)

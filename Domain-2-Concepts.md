@@ -6,7 +6,80 @@ This guide explains everything you need to know about designing tools and integr
 
 ---
 
-## 📚 Table of Contents
+## �️ Concept Map
+
+```
+TOOL DESIGN & MCP INTEGRATION
+│
+├── TOOL ANATOMY (3 Essential Parts)
+│   ├── 1. Name
+│   │   ├── ✓ Good: search_customer, send_email
+│   │   └── ✗ Bad: tool1, helper, do_thing
+│   ├── 2. Description
+│   │   ├── What it does
+│   │   ├── What it needs (parameters)
+│   │   ├── What it returns
+│   │   └── When to use it
+│   └── 3. Parameters
+│       ├── Types: string, number, boolean, array, object
+│       ├── Required vs Optional
+│       └── Clear naming
+│
+├── TOOL DESIGN PRINCIPLES
+│   ├── One Tool, One Purpose
+│   ├── Optimal: 4-5 tools per agent
+│   ├── Combine Related Operations
+│   │   └── Example: search_customer(type, value) vs 20 separate tools
+│   ├── Clear Parameter Names
+│   └── Include Examples in Description
+│
+├── MCP (Model Context Protocol)
+│   ├── Configuration Scopes (Hierarchy)
+│   │   ├── Managed (Highest priority)
+│   │   ├── Project (.mcp.json in root)
+│   │   ├── User (~/.claude.json)
+│   │   └── Local (Lowest priority)
+│   ├── Environment Variables
+│   │   ├── ${VAR} - Use variable
+│   │   └── ${VAR:-default} - Use VAR or default
+│   └── MCP Servers
+│       └── Standardized tool/resource providers
+│
+├── BUILT-IN TOOLS
+│   ├── Read (Read file contents)
+│   ├── Write (Create new files)
+│   ├── Edit (Modify existing files)
+│   ├── Grep (Search file contents)
+│   ├── Glob (Find files by pattern)
+│   └── Bash (Run shell commands)
+│
+├── ERROR HANDLING
+│   ├── Structured Error Response
+│   │   ├── success: false
+│   │   ├── errorCategory
+│   │   ├── isRetryable (true/false)
+│   │   ├── message
+│   │   ├── suggestedAction
+│   │   └── context
+│   ├── Error Categories
+│   │   ├── Retryable: network_timeout, rate_limit, service_unavailable
+│   │   └── Not Retryable: auth_failed, invalid_input, not_found
+│   └── Empty Results ≠ Error
+│       ├── Empty: Valid result (no data found)
+│       └── Error: Access failure
+│
+└── TOOL CHOICE MODES
+    ├── "auto" (Default)
+    │   └── Claude decides whether to use tools
+    ├── "any" (Force tool use)
+    │   └── Use for: Guaranteed structured output
+    └── Specific Tool
+        └── Force exact tool: {"type": "tool", "name": "..."}
+```
+
+---
+
+## �📚 Table of Contents
 
 1. [What Are Tools?](#what-are-tools)
 2. [Tool Anatomy](#tool-anatomy)

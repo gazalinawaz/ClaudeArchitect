@@ -6,7 +6,77 @@ This guide explains all the core concepts you need to understand before tackling
 
 ---
 
-## 📚 Table of Contents
+## �️ Concept Map
+
+```
+AGENTIC ARCHITECTURE & ORCHESTRATION
+│
+├── AGENTIC LOOPS
+│   ├── Loop Cycle (Receive → Think → Decide → Act → Check)
+│   ├── Stop Reasons
+│   │   ├── "tool_use" → Continue loop
+│   │   ├── "end_turn" → Task complete
+│   │   └── "max_tokens" → Response truncated
+│   └── Anti-Pattern: Parsing natural language for termination
+│
+├── MULTI-AGENT SYSTEMS
+│   ├── Architecture Patterns
+│   │   ├── Hub-and-Spoke (Coordinator + Subagents)
+│   │   ├── Coordinator Role (Orchestrate, Delegate, Synthesize)
+│   │   └── Subagent Role (Specialized tasks)
+│   ├── Context Management
+│   │   ├── Context Isolation (No automatic sharing)
+│   │   ├── Explicit Context Passing
+│   │   └── Task Tool (Required for spawning)
+│   └── Workflow Patterns
+│       ├── Prompt Chaining (Predefined sequence)
+│       ├── Dynamic Decomposition (Agent decides)
+│       └── Parallel Execution (Multiple Task calls)
+│
+├── HOOKS (Programmatic Enforcement)
+│   ├── PreToolUse (Before execution)
+│   │   └── Use: Validate inputs, check permissions
+│   ├── PostToolUse (After execution)
+│   │   └── Use: Validate outputs, enforce policies
+│   └── When to Use
+│       ├── Hooks: Critical business rules, compliance
+│       └── Prompts: Style preferences, guidance
+│
+├── SESSION MANAGEMENT
+│   ├── Session Commands
+│   │   ├── --resume (Continue previous)
+│   │   ├── fork_session (Branch for exploration)
+│   │   ├── /compact (Reduce context)
+│   │   └── Reset (Start fresh)
+│   ├── Context Degradation
+│   │   ├── Causes: Long sessions, accumulated context
+│   │   └── Solutions: Compact, reset, scratchpad
+│   └── Named Sessions (Parallel work streams)
+│
+├── TOOL SELECTION
+│   ├── Optimal: 4-5 tools per agent
+│   ├── Too many (18+): Degrades selection quality
+│   └── Selection Method: Based on tool descriptions
+│
+└── ERROR HANDLING & ESCALATION
+    ├── Structured Errors
+    │   ├── errorCategory
+    │   ├── isRetryable
+    │   ├── context
+    │   └── suggestedAction
+    ├── Escalation Triggers
+    │   ├── ✓ Policy gaps
+    │   ├── ✓ High-value transactions
+    │   ├── ✓ Legal concerns
+    │   ├── ✓ Explicit business rules
+    │   ├── ✗ Customer sentiment
+    │   └── ✗ Self-reported confidence
+    └── Partial Results (Some succeed, some fail)
+```
+
+---
+
+## �📚 Table of Contents
 
 1. [Agentic Loops](#agentic-loops)
 2. [Stop Reasons](#stop-reasons)

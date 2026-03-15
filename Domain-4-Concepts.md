@@ -6,7 +6,87 @@ This guide explains prompt engineering techniques, few-shot prompting, structure
 
 ---
 
-## 📚 Table of Contents
+## �️ Concept Map
+
+```
+PROMPT ENGINEERING & STRUCTURED OUTPUT
+│
+├── EXPLICIT vs VAGUE PROMPTS
+│   ├── ✗ Vague: "Make it better", "Improve the code"
+│   │   └── Problem: Unpredictable results
+│   └── ✓ Explicit: Specific requirements + Clear criteria
+│       └── Template: [Action] by [Method] to achieve [Outcome]
+│
+├── FEW-SHOT PROMPTING
+│   ├── What: Provide examples to guide output format
+│   ├── Optimal: 2-4 examples
+│   │   ├── 1 example: Might be seen as unique case
+│   │   ├── 2-4 examples: Shows pattern clearly
+│   │   └── 10+ examples: Diminishing returns
+│   └── Cover Edge Cases
+│       ├── Normal cases
+│       ├── Edge cases
+│       ├── Different formats
+│       └── Missing data
+│
+├── STRUCTURED OUTPUT (JSON Schema)
+│   ├── What Schema Guarantees
+│   │   ├── ✓ Structure matches (field names, types)
+│   │   ├── ✓ Required fields present
+│   │   ├── ✓ Data types correct
+│   │   └── ✗ NOT semantic correctness
+│   ├── Schema Components
+│   │   ├── type, required, properties
+│   │   ├── enum (allowed values)
+│   │   └── enum with "other" (graceful handling)
+│   └── Guaranteed Output
+│       └── tool_choice: "any" + JSON schema
+│
+├── VALIDATION-RETRY LOOPS
+│   ├── Pattern
+│   │   ├── 1. Get output from Claude
+│   │   ├── 2. Validate output
+│   │   ├── 3. If invalid → Retry with specific errors
+│   │   └── 4. Repeat until valid or max retries (3-5)
+│   ├── Specific Error Feedback
+│   │   ├── ✗ Generic: "That was wrong, try again"
+│   │   └── ✓ Specific: "Field 'date' must be YYYY-MM-DD format"
+│   └── When Ineffective
+│       ├── Ambiguous requirements
+│       ├── Missing source data
+│       └── Impossible task
+│
+├── TEMPERATURE SETTINGS
+│   ├── 0.0 - 0.2 (Low)
+│   │   └── Use for: Factual, consistent, data extraction
+│   ├── 0.3 - 0.5 (Balanced)
+│   │   └── Use for: General tasks, documentation
+│   ├── 0.6 - 0.8 (Creative)
+│   │   └── Use for: Brainstorming, content writing
+│   └── 0.9 - 1.0 (Very Creative)
+│       └── Use for: Creative writing, varied ideas
+│
+├── PROMPT CHAINING
+│   ├── What: Sequence of prompts building on each other
+│   ├── When to Use
+│   │   ├── ✓ Clear sequential steps
+│   │   ├── ✓ Each step builds on previous
+│   │   └── ✗ Simple single-step tasks
+│   └── Context Management
+│       └── Summarize between steps to manage growth
+│
+└── MULTI-PASS REVIEW
+    ├── Why: Avoid confirmation bias
+    ├── Pass 1: Generation (Session 1)
+    ├── Pass 2: Review (Fresh Session 2)
+    │   └── Fresh session = No memory = Unbiased
+    ├── Pass 1 Focus: Per-file analysis
+    └── Pass 2 Focus: Cross-file integration
+```
+
+---
+
+## �📚 Table of Contents
 
 1. [Explicit vs Vague Prompts](#explicit-vs-vague-prompts)
 2. [Few-Shot Prompting](#few-shot-prompting)
