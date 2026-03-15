@@ -6,6 +6,16 @@ This practice question bank contains **500+ questions** organized by domain and 
 
 ### Files Organization
 
+Each domain has **two files**:
+
+#### Concept Guides (Study FIRST)
+1. **[Domain-1-Concepts.md](./Domain-1-Concepts.md)** - Agentic Architecture fundamentals
+2. **[Domain-2-Concepts.md](./Domain-2-Concepts.md)** - Tool Design & MCP fundamentals
+3. **[Domain-3-Concepts.md](./Domain-3-Concepts.md)** - Claude Code Configuration fundamentals
+4. **[Domain-4-Concepts.md](./Domain-4-Concepts.md)** - Prompt Engineering fundamentals
+5. **[Domain-5-Concepts.md](./Domain-5-Concepts.md)** - Context Management fundamentals
+
+#### Practice Questions (Study AFTER concepts)
 1. **[Domain-1-Questions.md](./Domain-1-Questions.md)** - Agentic Architecture & Orchestration (135 questions - 27%)
 2. **[Domain-2-Questions.md](./Domain-2-Questions.md)** - Tool Design & MCP Integration (90 questions - 18%)
 3. **[Domain-3-Questions.md](./Domain-3-Questions.md)** - Claude Code Configuration & Workflows (100 questions - 20%)
@@ -64,4 +74,4 @@ After completing all questions:
 
 ---
 
-**Start here:** [Domain 1 Questions →](./Domain-1-Questions.md)
+**Start here:** [Domain 1 Concepts →](./Domain-1-Concepts.md) (Read concepts first, then attempt questions!)
