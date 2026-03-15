@@ -11,7 +11,8 @@ This practice question bank contains **500+ questions** organized by domain and 
 3. **[Domain-3-Questions.md](./Domain-3-Questions.md)** - Claude Code Configuration & Workflows (100 questions - 20%)
 4. **[Domain-4-Questions.md](./Domain-4-Questions.md)** - Prompt Engineering & Structured Output (100 questions - 20%)
 5. **[Domain-5-Questions.md](./Domain-5-Questions.md)** - Context Management & Reliability (75 questions - 15%)
-6. **[Answer-Key.md](./Answer-Key.md)** - Complete answer key with explanations
+
+**Note:** Each question includes the answer (marked with ✓) and detailed explanation inline for convenient studying.
 
 ### Difficulty Levels
 
@@ -23,11 +24,13 @@ Each domain contains:
 ### How to Use
 
 1. **Start with one domain** - Complete all beginner questions first
-2. **Check answers** after every 10-20 questions
-3. **Review explanations** for wrong answers
+2. **Try each question** before looking at the answer (marked with ✓)
+3. **Read explanations** for both correct and incorrect answers
 4. **Progress to intermediate** when scoring 80%+ on beginner
 5. **Tackle advanced** before taking full practice exams
 6. **Mix domains** for full exam simulation
+
+**Tip:** Cover the answer section while attempting each question to test yourself properly.
 
 ### Study Tips
 
@@ -55,7 +58,7 @@ After completing all questions:
 | D1: Agentic Architecture | 135 | 27% | [Domain-1-Questions.md](./Domain-1-Questions.md) |
 | D2: Tool Design & MCP | 90 | 18% | [Domain-2-Questions.md](./Domain-2-Questions.md) |
 | D3: Claude Code Config | 100 | 20% | [Domain-3-Questions.md](./Domain-3-Questions.md) |
-| D4: Prompt Engineering | 100 | 20% | [Domain-4-Questions.md](./Domain-4-Questions.md) |
+| D4: Prompt Engineering | 100 | 20**All answers included inline** % | [Domain-4-Questions.md](./Domain-4-Questions.md) |
 | D5: Context Management | 75 | 15% | [Domain-5-Questions.md](./Domain-5-Questions.md) |
 | **Total** | **500** | **100%** | |
 
